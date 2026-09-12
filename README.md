@@ -31,6 +31,10 @@ python3 tools/aa/export_cosmos.py                    # pull a fresh snapshot and
 
 Put your key in `.env` as `AA_API_KEY=...` (git-ignored). Development tooling needs Python 3 plus Node and Edge on the Windows side; the wallpapers themselves have no dependencies.
 
+## License
+
+Code is released under the [MIT License](LICENSE). The license covers the code in this repository only — not the Artificial Analysis data described below.
+
 ## Data and licensing
 
 Data comes from the [Artificial Analysis](https://artificialanalysis.ai/) Data API under the user's own free key; attribution is shown in every wallpaper as required by AA's terms. The snapshots under `data/aa/` and the bundled snapshot inside a default build are AA's data — keep them out of public releases (`tools/build.py --no-bundle-data`) unless AA grants redistribution.
