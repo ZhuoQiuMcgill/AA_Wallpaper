@@ -1,0 +1,446 @@
+{
+ "generated_from": "artificialanalysis.ai homepage chart payload (local copy)",
+ "rule": [
+  "Colours are AA's own chart colours. A colour is attached to an API creator only when",
+  "  (1) a chart entry's own model `id` exists in the language-model snapshot  -> source \"chart_entry_id\", or",
+  "  (2) the entry's logo file name (basename, minus extension and `_small`, `_` -> `-`) equals the creator_key exactly",
+  "      -> source \"logo_name_match\".",
+  "Anything else stays unmapped. No colours are invented."
+ ],
+ "creators": {
+  "ai21-labs": {
+   "name": "AI21 Labs",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "ai9stars": {
+   "name": "AI9Stars",
+   "color": "#795BCF",
+   "source": "logo_name_match",
+   "candidates": {
+    "#795BCF": 1
+   }
+  },
+  "alibaba": {
+   "name": "Alibaba",
+   "color": "#ff7018",
+   "source": "logo_name_match",
+   "candidates": {
+    "#ff7018": 18
+   }
+  },
+  "allen-institute-for-ai": {
+   "name": "Allen Institute for AI",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "amazon": {
+   "name": "Amazon",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "anthropic": {
+   "name": "Anthropic",
+   "color": "#cc785c",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#cc785c": 6
+   }
+  },
+  "apodex": {
+   "name": "Apodex",
+   "color": "#0FD9D2",
+   "source": "logo_name_match",
+   "candidates": {
+    "#0FD9D2": 1
+   }
+  },
+  "arcee-ai": {
+   "name": "Arcee AI",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "baidu": {
+   "name": "Baidu",
+   "color": "#2436d8",
+   "source": "logo_name_match",
+   "candidates": {
+    "#2436d8": 1
+   }
+  },
+  "bytedance-seed": {
+   "name": "ByteDance Seed",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "celeris": {
+   "name": "Celeris",
+   "color": "#ff8a75",
+   "source": "logo_name_match",
+   "candidates": {
+    "#ff8a75": 1
+   }
+  },
+  "china-mobile": {
+   "name": "China Mobile",
+   "color": "#00b8ea",
+   "source": "logo_name_match",
+   "candidates": {
+    "#00b8ea": 1
+   }
+  },
+  "cohere": {
+   "name": "Cohere",
+   "color": "#D18EE2",
+   "source": "logo_name_match",
+   "candidates": {
+    "#D18EE2": 1
+   }
+  },
+  "databricks": {
+   "name": "Databricks",
+   "color": "#e4462f",
+   "source": "logo_name_match",
+   "candidates": {
+    "#e4462f": 1
+   }
+  },
+  "deep-cogito": {
+   "name": "Deep Cogito",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "deepseek": {
+   "name": "DeepSeek",
+   "color": "#2243e6",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#2243e6": 6
+   }
+  },
+  "google": {
+   "name": "Google",
+   "color": "#34A853",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#34A853": 3
+   }
+  },
+  "ibm": {
+   "name": "IBM",
+   "color": "#0f62fe",
+   "source": "logo_name_match",
+   "candidates": {
+    "#0f62fe": 1
+   }
+  },
+  "inception": {
+   "name": "Inception",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "inclusionai": {
+   "name": "InclusionAI",
+   "color": "#4fb5ff",
+   "source": "logo_name_match",
+   "candidates": {
+    "#4fb5ff": 1
+   }
+  },
+  "kimi": {
+   "name": "Kimi",
+   "color": "#047AFE",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#047AFE": 3
+   }
+  },
+  "korea-telecom": {
+   "name": "Korea Telecom",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "kwaikat": {
+   "name": "KwaiKAT",
+   "color": "#489034",
+   "source": "logo_name_match",
+   "candidates": {
+    "#489034": 1
+   }
+  },
+  "lg-ai-research": {
+   "name": "LG AI Research",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "liquid-ai": {
+   "name": "Liquid AI",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "longcat": {
+   "name": "LongCat",
+   "color": "#2adb65",
+   "source": "logo_name_match",
+   "candidates": {
+    "#2adb65": 1
+   }
+  },
+  "mbzuai-institute-of-foundation-models": {
+   "name": "MBZUAI Institute of Foundation Models",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "meta": {
+   "name": "Meta",
+   "color": "#0089f4",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#0089f4": 3
+   }
+  },
+  "microsoft": {
+   "name": "Microsoft",
+   "color": "#0078D5",
+   "source": "logo_name_match",
+   "candidates": {
+    "#0078D5": 2,
+    "#005597": 1
+   }
+  },
+  "minimax": {
+   "name": "MiniMax",
+   "color": "#EB3568",
+   "source": "logo_name_match",
+   "candidates": {
+    "#EB3568": 9
+   }
+  },
+  "mistral": {
+   "name": "Mistral",
+   "color": "#fd6f00",
+   "source": "logo_name_match",
+   "candidates": {
+    "#fd6f00": 6
+   }
+  },
+  "motif-technologies": {
+   "name": "Motif Technologies",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "multiverse-computing": {
+   "name": "Multiverse Computing",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "nanbeige": {
+   "name": "Nanbeige",
+   "color": "#023c3e",
+   "source": "logo_name_match",
+   "candidates": {
+    "#023c3e": 1
+   }
+  },
+  "naver": {
+   "name": "Naver",
+   "color": "#03c75b",
+   "source": "logo_name_match",
+   "candidates": {
+    "#03c75b": 1
+   }
+  },
+  "nex-agi": {
+   "name": "Nex AGI",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "nous-research": {
+   "name": "Nous Research",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "nvidia": {
+   "name": "NVIDIA",
+   "color": "#76b900",
+   "source": "logo_name_match",
+   "candidates": {
+    "#76b900": 4,
+    "#85b737": 2
+   }
+  },
+  "openai": {
+   "name": "OpenAI",
+   "color": "#1f1f1f",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#1f1f1f": 6
+   }
+  },
+  "openbmb": {
+   "name": "OpenBMB",
+   "color": "#3B62EC",
+   "source": "logo_name_match",
+   "candidates": {
+    "#3B62EC": 1
+   }
+  },
+  "openchat": {
+   "name": "OpenChat",
+   "color": "#5a80de",
+   "source": "logo_name_match",
+   "candidates": {
+    "#5a80de": 1
+   }
+  },
+  "perplexity": {
+   "name": "Perplexity",
+   "color": "#1B818E",
+   "source": "logo_name_match",
+   "candidates": {
+    "#1B818E": 1
+   }
+  },
+  "prime-intellect": {
+   "name": "Prime Intellect",
+   "color": "#000000",
+   "source": "logo_name_match",
+   "candidates": {
+    "#000000": 1
+   }
+  },
+  "reka-ai": {
+   "name": "Reka AI",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "sapiens-ai": {
+   "name": "Sapiens AI",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "sarvam": {
+   "name": "Sarvam",
+   "color": "#807D77",
+   "source": "logo_name_match",
+   "candidates": {
+    "#807D77": 2
+   }
+  },
+  "servicenow": {
+   "name": "ServiceNow",
+   "color": "#80B6A1",
+   "source": "logo_name_match",
+   "candidates": {
+    "#80B6A1": 1
+   }
+  },
+  "sk-telecom": {
+   "name": "SK Telecom",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "snowflake": {
+   "name": "Snowflake",
+   "color": "#4e9cd7",
+   "source": "logo_name_match",
+   "candidates": {
+    "#4e9cd7": 1
+   }
+  },
+  "spacexai": {
+   "name": "SpaceXAI",
+   "color": "#736cd3",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#736cd3": 3
+   }
+  },
+  "stepfun": {
+   "name": "StepFun",
+   "color": "#017AFF",
+   "source": "logo_name_match",
+   "candidates": {
+    "#017AFF": 3
+   }
+  },
+  "swiss-ai-initiative": {
+   "name": "Swiss AI Initiative",
+   "color": "#bee9fa",
+   "source": "logo_name_match",
+   "candidates": {
+    "#bee9fa": 1
+   }
+  },
+  "tencent": {
+   "name": "Tencent",
+   "color": "#5CB9FF",
+   "source": "logo_name_match",
+   "candidates": {
+    "#5CB9FF": 1
+   }
+  },
+  "thinking-machines": {
+   "name": "Thinking Machines",
+   "color": "#676767",
+   "source": "logo_name_match",
+   "candidates": {
+    "#676767": 4
+   }
+  },
+  "tii-uae": {
+   "name": "TII UAE",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "trillion-labs": {
+   "name": "Trillion Labs",
+   "color": null,
+   "source": null,
+   "candidates": {}
+  },
+  "upstage": {
+   "name": "Upstage",
+   "color": "#7c59f5",
+   "source": "logo_name_match",
+   "candidates": {
+    "#7c59f5": 1
+   }
+  },
+  "xiaomi": {
+   "name": "Xiaomi",
+   "color": "#ff6900",
+   "source": "logo_name_match",
+   "candidates": {
+    "#ff6900": 2
+   }
+  },
+  "z-ai": {
+   "name": "Z AI",
+   "color": "#1c7ff8",
+   "source": "chart_entry_id",
+   "candidates": {
+    "#1c7ff8": 3
+   }
+  }
+ }
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AA Wallpaper Probe</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0f14; color: #d7dde5; font: 20px/1.45 Consolas, "Cascadia Mono", monospace; }
+  #wrap { position: absolute; right: 4vw; top: 6vh; width: 60vw; max-width: 1500px; }
+  h1 { font-size: 28px; margin: 0 0 6px; color: #fff; }
+  .sub { color: #7f8b99; margin-bottom: 18px; }
+  .row { display: grid; grid-template-columns: 340px 1fr; gap: 12px; padding: 8px 10px; border-left: 4px solid #333; margin-bottom: 6px; background: #111821; }
+  .row.ok   { border-color: #2ecc71; }
+  .row.fail { border-color: #e74c3c; }
+  .row.info { border-color: #3498db; }
+  .k { color: #9fb3c8; }
+  .v { white-space: pre-wrap; word-break: break-all; }
+  .ok .v::before   { content: "OK   "; color: #2ecc71; }
+  .fail .v::before { content: "FAIL "; color: #e74c3c; }
+  #verdict { margin-top: 18px; padding: 14px; font-size: 24px; background: #16202b; border: 1px solid #2a3a4c; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <h1>AA Wallpaper Probe</h1>
+  <div class="sub" id="sub">running…</div>
+  <div id="out"></div>
+  <div id="verdict"></div>
+</div>
+
+<!-- Test: does a same-folder <script src> load? (baseline; this is how every web wallpaper loads its JS) -->
+<script src="probe-data.js"></script>
+<script>
+(function () {
+  var out = document.getElementById('out');
+  var results = {};
+
+  function log(key, value, status) {          // status: true | false | 'info'
+    results[key] = { value: value, status: status };
+    var cls = status === 'info' ? 'info' : (status ? 'ok' : 'fail');
+    var row = document.createElement('div');
+    row.className = 'row ' + cls;
+    row.innerHTML = '<div class="k"></div><div class="v"></div>';
+    row.children[0].textContent = key;
+    row.children[1].textContent = value;
+    out.appendChild(row);
+    console.log('[probe] ' + key + ' => ' + (status === 'info' ? '' : (status ? 'OK ' : 'FAIL ')) + value);
+  }
+
+  // Cross-origin fetch test. CORS enforced  -> fetch rejects with TypeError ("Failed to fetch").
+  //                          CORS NOT enforced -> we can read the status and body (401 JSON is expected without a key).
+  function testFetch(label, url, init) {
+    return fetch(url, init).then(function (r) {
+      return r.text().then(function (t) {
+        log(label, 'status=' + r.status + ' body=' + t.slice(0, 120).replace(/\s+/g, ' '), true);
+      });
+    }).catch(function (e) {
+      log(label, String(e), false);
+    });
+  }
+
+  function xhrLocal(path) {
+    return new Promise(function (res) {
+      try {
+        var x = new XMLHttpRequest();
+        x.open('GET', path);
+        x.onload = function () { log('XHR local ' + path, 'status=' + x.status + ' body=' + x.responseText.trim(), true); res(); };
+        x.onerror = function () { log('XHR local ' + path, 'onerror (status=' + x.status + ')', false); res(); };
+        x.send();
+      } catch (e) { log('XHR local ' + path, String(e), false); res(); }
+    });
+  }
+
+  function verdict() {
+    var a = results['AA API GET + x-api-key (preflight)'];
+    var b = results['AA API simple GET (no preflight)'];
+    var c = results['control: CORS-enabled endpoint'];
+    var v = document.getElementById('verdict');
+    if (a && a.status) {
+      v.textContent = 'VERDICT: CORS is NOT enforced here -> Path A (wallpaper fetches AA API directly) is viable.';
+    } else if (c && c.status) {
+      v.textContent = 'VERDICT: network works but CORS IS enforced -> use Path B (local script writes data.js) or Path C (cefcommandline).';
+    } else if (c && !c.status) {
+      v.textContent = 'VERDICT: no network at all from the wallpaper (check firewall / WE settings).';
+    } else {
+      v.textContent = 'VERDICT: inconclusive, see rows above.';
+    }
+    document.getElementById('sub').textContent = 'finished ' + new Date().toLocaleString() + ' — take a screenshot or read the CEF devtools console';
+  }
+
+  function realFetch(key) {
+    var paths = ['/language/models/free', '/data/llms/models'];
+    return paths.reduce(function (p, path) {
+      return p.then(function () {
+        return fetch('https://artificialanalysis.ai/api/v2' + path, { headers: { 'x-api-key': key } }).then(function (r) {
+          var rl = ['x-ratelimit-limit', 'x-ratelimit-remaining', 'x-ratelimit-reset'].map(function (h) { return h + '=' + r.headers.get(h); }).join(' ');
+          return r.json().then(function (j) {
+            var arr = Array.isArray(j.data) ? j.data : (Array.isArray(j) ? j : []);
+            var top = arr.filter(function (m) { return m.evaluations && m.evaluations.artificial_analysis_intelligence_index != null; })
+              .sort(function (x, y) { return y.evaluations.artificial_analysis_intelligence_index - x.evaluations.artificial_analysis_intelligence_index; })
+              .slice(0, 5).map(function (m) { return m.name + ' ' + m.evaluations.artificial_analysis_intelligence_index; }).join(' | ');
+            log('REAL ' + path, 'status=' + r.status + ' tier=' + j.tier + ' iiv=' + j.intelligence_index_version +
+              ' n=' + arr.length + ' pages=' + (j.pagination && j.pagination.total_pages) + '\n' + rl + '\nTOP5: ' + (top || JSON.stringify(j).slice(0, 200)), r.ok);
+          });
+        }).catch(function (e) { log('REAL ' + path, String(e), false); });
+      });
+    }, Promise.resolve());
+  }
+
+  // ---- environment facts (info rows) ----
+  log('userAgent', navigator.userAgent, 'info');
+  log('location.href', location.href, 'info');
+  log('viewport', 'innerWidth=' + innerWidth + ' innerHeight=' + innerHeight + ' devicePixelRatio=' + devicePixelRatio +
+      ' screen=' + screen.width + 'x' + screen.height, 'info');
+
+  // ---- persistence ----
+  try {
+    var prev = localStorage.getItem('aa_probe_last');
+    localStorage.setItem('aa_probe_last', new Date().toISOString());
+    log('localStorage', 'writable; previous value=' + prev, true);
+  } catch (e) { log('localStorage', String(e), false); }
+
+  // ---- local file access (Path B needs at least one of these) ----
+  log('<script src> same folder', window.PROBE_DATA ? JSON.stringify(window.PROBE_DATA) : 'window.PROBE_DATA undefined', !!window.PROBE_DATA);
+
+  var chain = fetch('probe.json').then(function (r) { return r.text().then(function (t) { log('fetch local probe.json', 'status=' + r.status + ' body=' + t.trim(), true); }); })
+    .catch(function (e) { log('fetch local probe.json', String(e), false); })
+    .then(function () { return xhrLocal('probe.json'); })
+    // ---- cross-origin network ----
+    .then(function () { return testFetch('AA API simple GET (no preflight)', 'https://artificialanalysis.ai/api/v2/language/models/free', {}); })
+    .then(function () { return testFetch('AA API GET + x-api-key (preflight)', 'https://artificialanalysis.ai/api/v2/language/models/free', { headers: { 'x-api-key': 'probe' } }); })
+    .then(function () { return testFetch('control: CORS-enabled endpoint', 'https://api.github.com/zen', {}); })
+    .then(verdict);
+
+  // ---- user property: optional real API call with the user's key ----
+  var keyUsed = false;
+  window.wallpaperPropertyListener = {
+    applyUserProperties: function (p) {
+      if (p.apikey && p.apikey.value && p.apikey.value.trim() && !keyUsed) {
+        keyUsed = true;
+        var key = p.apikey.value.trim();
+        log('user property apikey', 'received (' + key.length + ' chars)', true);
+        chain = chain.then(function () { return realFetch(key); });
+      }
+    }
+  };
+})();
+</script>
+</body>
+</html>

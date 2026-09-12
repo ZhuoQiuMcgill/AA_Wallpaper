@@ -1,0 +1,6 @@
+{
+  "fetched_at": "2026-09-11T18:51:46Z",
+  "endpoint": "https://artificialanalysis.ai/api/v2/language/models/free",
+  "pages": 4,
+  "note": "Real pull made by tools/pull_aa.py on 2026-09-11; fetched_at taken from the file modification time (UTC) of the last page (pages fetched 18:51:24-18:51:46Z). Migrated from data/raw/ unchanged."
+}

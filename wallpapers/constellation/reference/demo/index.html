@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>AI Family Constellations</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <svg id="lines" aria-hidden="true"></svg>
+  <main id="atlas" aria-label="Artificial Analysis top models grouped into family constellations"></main>
+
+  <header class="masthead">
+    <div class="eyebrow">ARTIFICIAL ANALYSIS · INTELLIGENCE INDEX <span id="indexVersion">—</span></div>
+    <h1>FAMILY CONSTELLATIONS</h1>
+    <div class="meta">
+      <span>TOP <b id="topN">40</b> RAW MODEL RANKING</span>
+      <i></i>
+      <span id="updatedAt">UPDATED —</span>
+    </div>
+  </header>
+
+  <aside class="legend">
+    <div><span class="rank-chip">01</span> rank</div>
+    <div><span class="score-chip">53.4</span> intelligence</div>
+    <div><span class="line-chip"></span> same family</div>
+  </aside>
+
+  <aside id="inspector" class="inspector">
+    <div class="inspector-top">
+      <div>
+        <div id="iRank" class="i-rank">#—</div>
+        <div id="iVariant" class="i-variant">—</div>
+      </div>
+      <div class="i-scorebox">
+        <div id="iScore" class="i-score">—</div>
+        <div>INTELLIGENCE</div>
+      </div>
+    </div>
+    <div id="iName" class="i-name">—</div>
+    <div id="iCreator" class="i-creator">—</div>
+    <div class="metrics">
+      <div><span>CODING</span><b id="iCoding">—</b></div>
+      <div><span>AGENTIC</span><b id="iAgentic">—</b></div>
+      <div><span>OUTPUT</span><b id="iTps">—</b></div>
+      <div><span>TTFT</span><b id="iTtft">—</b></div>
+      <div><span>INPUT</span><b id="iPriceIn">—</b></div>
+      <div><span>OUTPUT</span><b id="iPriceOut">—</b></div>
+      <div><span>RELEASED</span><b id="iRelease">—</b></div>
+      <div><span>FAMILY</span><b id="iFamilyCount">—</b></div>
+    </div>
+  </aside>
+
+  <div class="note">EACH SHAPE IS A FAMILY · EACH STAR IS A RANKED VARIANT</div>
+  <div id="source" class="source"></div>
+
+  <script src="data/cosmos-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

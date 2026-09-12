@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Constellation Leaderboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <svg id="lines" aria-hidden="true"></svg>
+  <main id="atlas" aria-label="Artificial Analysis Intelligence Index, grouped into family constellations"></main>
+  <svg id="overlay" aria-hidden="true"><line id="obsline" /><circle id="obsring" /></svg>
+  <div id="annot"></div>
+  <div id="measure"></div>
+
+  <header class="masthead">
+    <div class="eyebrow">ARTIFICIAL ANALYSIS · INTELLIGENCE INDEX <span id="indexVersion">—</span></div>
+    <h1>AI CONSTELLATION LEADERBOARD</h1>
+    <div class="meta"><span>TOP <b id="topN">40</b> MODEL RANKING</span><i></i><span id="updatedAt">UPDATED —</span></div>
+  </header>
+
+  <aside class="legend">
+    <div><span class="rank-chip">01</span> rank</div>
+    <div><span class="score-chip">53.4</span> intelligence</div>
+    <div><span class="line-chip"></span> same family</div>
+    <div><span class="delta-chip">↑3</span> rank change</div>
+    <div><span class="new-chip"></span> new this month</div>
+  </aside>
+
+  <footer class="foot">
+    <div class="left"><b id="attribution">Data: Artificial Analysis · artificialanalysis.ai</b><br /><span id="sky-count">—</span> · <span id="baseline">—</span></div>
+    <div class="right"><span id="status" data-state="init">—</span></div>
+  </footer>
+
+  <script src="js/we-bridge.js"></script>
+  <script src="js/creator-colors.js"></script>
+  <script src="js/history-seed.js"></script>
+  <script src="js/aa-normalize.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="data/cosmos-data.js"></script>
+  <script src="js/aa-fetch.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

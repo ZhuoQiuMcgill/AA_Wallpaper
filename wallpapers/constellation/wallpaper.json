@@ -1,0 +1,15 @@
+{
+  "id": "constellation",
+  "title": "AI Constellation Leaderboard",
+  "deploy_folder": "ai-constellation-leaderboard",
+  "shared": [
+    "we/we-bridge.js",
+    "aa/aa-fetch.js",
+    "aa/language/aa-normalize.js"
+  ],
+  "data": {
+    "creator_colors": true,
+    "history_seed": "aa/language",
+    "bundle_snapshot": "aa/language"
+  }
+}

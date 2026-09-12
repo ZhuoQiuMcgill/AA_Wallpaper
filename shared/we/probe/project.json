@@ -1,0 +1,19 @@
+{
+  "title": "AA Wallpaper Probe",
+  "description": "Diagnostic wallpaper for the AA leaderboard project: tests CORS/network, viewport, local file access, localStorage and user properties inside Wallpaper Engine's CEF.",
+  "file": "index.html",
+  "type": "web",
+  "contentrating": "Everyone",
+  "tags": ["Technology"],
+  "general": {
+    "properties": {
+      "apikey": {
+        "order": 0,
+        "text": "Artificial Analysis API key (optional, uses 2 of your 100 daily requests)",
+        "type": "textinput",
+        "value": ""
+      }
+    },
+    "supportsaudioprocessing": false
+  }
+}

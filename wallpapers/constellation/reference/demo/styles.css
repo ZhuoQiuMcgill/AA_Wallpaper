@@ -1,0 +1,57 @@
+:root{
+  color-scheme:dark;
+  --bg:#030610;
+  --ink:rgba(246,249,255,.95);
+  --muted:rgba(202,214,236,.54);
+  --faint:rgba(192,207,235,.25);
+  --hair:rgba(255,255,255,.075);
+  font-family:"Segoe UI Variable","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--bg)}
+body{color:var(--ink);user-select:none}
+#space,#lines,#atlas{position:fixed;inset:0;width:100%;height:100%}
+#space{z-index:0;display:block}
+#lines{z-index:1;overflow:visible;pointer-events:none}
+#atlas{z-index:2;pointer-events:none}
+
+.masthead{position:fixed;left:56px;top:43px;z-index:20;pointer-events:none;text-shadow:0 2px 20px rgba(0,0,0,.7)}
+.eyebrow{font:600 11px/1.2 "Cascadia Mono","Consolas",monospace;letter-spacing:.17em;color:var(--muted)}
+h1{margin:9px 0 0;font-size:42px;line-height:1;font-weight:260;letter-spacing:.19em}
+.meta{margin-top:13px;display:flex;align-items:center;gap:12px;font:550 10px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.09em;color:var(--faint)}
+.meta i{display:block;width:24px;height:1px;background:rgba(255,255,255,.12)}
+
+.legend{position:fixed;right:44px;top:45px;z-index:20;display:grid;gap:8px;padding:12px 14px;border-left:1px solid rgba(255,255,255,.08);font:500 9px/1.1 "Cascadia Mono","Consolas",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(204,216,238,.34);pointer-events:none}
+.legend>div{display:flex;align-items:center;gap:9px}.rank-chip{font-weight:800;color:rgba(240,246,255,.9)}.score-chip{color:rgba(210,224,250,.7)}.line-chip{width:25px;height:1px;background:rgba(180,205,245,.28);box-shadow:0 0 8px rgba(160,195,255,.2)}
+
+.family{--c:180,195,225;position:absolute;pointer-events:none}
+.family::before{content:"";position:absolute;left:50%;top:50%;width:120%;height:120%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(var(--c),.055),rgba(var(--c),.016) 36%,transparent 70%);filter:blur(18px);opacity:.8}
+.family-title{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:250px;text-align:center;pointer-events:none;text-shadow:0 4px 24px rgba(0,0,0,.7)}
+.family-name{font-size:13px;font-weight:620;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--c),.62)}
+.family-sub{margin-top:6px;font:550 8px/1.1 "Cascadia Mono","Consolas",monospace;letter-spacing:.09em;color:rgba(200,214,237,.24)}
+
+.star-node{--c:180,195,225;position:absolute;width:116px;min-height:66px;transform:translate(-50%,-50%);pointer-events:auto;cursor:default;text-shadow:0 3px 17px rgba(0,0,0,.76)}
+.star-node .spark{position:absolute;left:-5px;top:23px;width:8px;height:8px;border-radius:50%;background:rgb(var(--c));box-shadow:0 0 7px rgba(var(--c),.95),0 0 22px rgba(var(--c),.46),0 0 46px rgba(var(--c),.16);transition:transform .18s ease,box-shadow .18s ease}
+.star-node .spark::before,.star-node .spark::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(var(--c),.58)}
+.star-node .spark::before{width:20px;height:1px}.star-node .spark::after{width:1px;height:20px}
+.star-node .rankline{display:flex;align-items:baseline;gap:7px;white-space:nowrap}
+.star-node .rank{font:800 16px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.02em;color:rgba(248,251,255,.98)}
+.star-node .score{font:600 11px/1 "Cascadia Mono","Consolas",monospace;color:rgba(var(--c),.84)}
+.star-node .variant{margin-top:7px;font:600 8px/1.1 "Cascadia Mono","Consolas",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(221,229,244,.46);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.star-node.best .rank{font-size:25px}.star-node.best .score{font-size:15px}.star-node.best .spark{width:11px;height:11px;left:-7px;top:29px}.star-node.best .spark::before{width:30px}.star-node.best .spark::after{height:30px}.star-node.best .variant{color:rgba(var(--c),.75)}
+.star-node.top3 .rank{font-size:35px;font-weight:680}.star-node.top3 .score{font-size:18px}.star-node.top3 .spark{width:13px;height:13px;top:33px;box-shadow:0 0 9px rgba(var(--c),1),0 0 30px rgba(var(--c),.58),0 0 74px rgba(var(--c),.23)}
+.star-node:hover{z-index:50}.star-node:hover .spark{transform:scale(1.35);box-shadow:0 0 10px rgba(var(--c),1),0 0 34px rgba(var(--c),.74),0 0 80px rgba(var(--c),.30)}
+
+.singleton{--c:180,195,225;position:absolute;width:205px;transform:translate(-50%,-50%);pointer-events:auto;padding-left:18px;text-shadow:0 3px 18px rgba(0,0,0,.78)}
+.singleton::before{content:"";position:absolute;left:0;top:14px;width:8px;height:8px;border-radius:50%;background:rgb(var(--c));box-shadow:0 0 8px rgba(var(--c),.8),0 0 24px rgba(var(--c),.32)}
+.singleton .s-top{display:flex;align-items:baseline;gap:9px}.singleton .s-rank{font:800 14px/1 "Cascadia Mono","Consolas",monospace}.singleton .s-score{font:600 10px/1 "Cascadia Mono","Consolas",monospace;color:rgba(var(--c),.77)}
+.singleton .s-name{margin-top:6px;font-size:11px;font-weight:560;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:rgba(236,242,252,.67)}
+.singleton:hover{z-index:50}.singleton:hover::before{box-shadow:0 0 10px rgba(var(--c),1),0 0 36px rgba(var(--c),.54)}
+
+.inspector{position:fixed;z-index:100;width:365px;padding:17px 19px 15px;border:1px solid rgba(255,255,255,.10);border-radius:12px;background:linear-gradient(145deg,rgba(8,14,27,.94),rgba(3,6,14,.84));backdrop-filter:blur(18px) saturate(130%);box-shadow:0 24px 80px rgba(0,0,0,.52),inset 0 1px 0 rgba(255,255,255,.035);opacity:0;transform:translateY(6px) scale(.985);transition:opacity .15s ease,transform .15s ease;pointer-events:none}
+.inspector.visible{opacity:1;transform:none}.inspector-top{display:flex;justify-content:space-between;gap:20px}.i-rank{font:800 12px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.08em}.i-variant{margin-top:7px;font:600 9px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}.i-scorebox{text-align:right;font:600 7px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.11em;color:var(--faint)}.i-score{font:300 40px/.9 "Segoe UI Variable","Segoe UI",sans-serif;letter-spacing:-.045em;color:rgba(247,250,255,.98)}.i-name{margin-top:13px;font-size:21px;font-weight:620;letter-spacing:-.02em}.i-creator{margin-top:5px;font:550 8px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px 20px;margin-top:15px;padding-top:13px;border-top:1px solid var(--hair)}.metrics>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.metrics span{font:550 7px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.08em;color:var(--faint)}.metrics b{font:650 10px/1 "Cascadia Mono","Consolas",monospace;color:rgba(237,243,253,.80)}
+
+.note{position:fixed;left:56px;bottom:76px;z-index:20;font:550 9px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.11em;color:rgba(198,212,235,.21);pointer-events:none}.source{position:fixed;right:42px;bottom:76px;z-index:20;font:500 9px/1 "Cascadia Mono","Consolas",monospace;letter-spacing:.07em;color:rgba(198,212,235,.22);pointer-events:none}
+
+@media(max-width:1500px){.masthead{left:34px;top:28px}h1{font-size:31px}.legend{right:28px;top:30px}.note{left:34px}.source{right:28px}.family-title{width:190px}.family-name{font-size:10px}.star-node{width:95px}.singleton{width:170px}}

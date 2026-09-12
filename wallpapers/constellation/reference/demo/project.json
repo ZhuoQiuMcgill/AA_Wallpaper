@@ -1,0 +1,24 @@
+{
+  "title": "AA Family Constellations — Concept Demo",
+  "description": "A Wallpaper Engine concept demo that groups raw Artificial Analysis leaderboard variants into varied family constellations while keeping exact rank and Intelligence scores visible.",
+  "file": "index.html",
+  "type": "web",
+  "contentrating": "Everyone",
+  "tags": [
+    "Technology",
+    "Abstract"
+  ],
+  "general": {
+    "supportsaudioprocessing": false,
+    "properties": {
+      "ambientmotion": {
+        "order": 1,
+        "text": "Ambient motion",
+        "type": "slider",
+        "min": 0,
+        "max": 100,
+        "value": 28
+      }
+    }
+  }
+}

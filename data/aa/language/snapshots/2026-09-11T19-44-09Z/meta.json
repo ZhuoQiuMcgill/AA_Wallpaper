@@ -1,0 +1,11 @@
+{
+ "fetched_at": "2026-09-11T19:44:09Z",
+ "endpoint": "https://artificialanalysis.ai/api/v2/language/models/free",
+ "pages": 4,
+ "ratelimit": {
+  "x-ratelimit-limit": "100",
+  "x-ratelimit-remaining": "90",
+  "x-ratelimit-reset": "1789239085"
+ },
+ "note": "fetched_at = UTC time when the last page finished downloading"
+}

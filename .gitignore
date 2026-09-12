@@ -1,0 +1,9 @@
+# secrets and local tool state
+.env
+.claude/
+# build output, screenshots, caches
+dist/
+preview/
+__pycache__/
+.preview-profile/
+# For a public release also exclude Artificial Analysis data (redistribution): data/aa/

@@ -1,0 +1,25 @@
+{
+  "title": "AI Constellation Leaderboard",
+  "description": "The Artificial Analysis Intelligence Index as a living sky atlas: every ranked model is a star, every model family a constellation. Refreshes from the official API every few hours. Data: Artificial Analysis (artificialanalysis.ai).",
+  "file": "index.html",
+  "type": "web",
+  "contentrating": "Everyone",
+  "preview": "preview.png",
+  "tags": ["Technology", "Abstract"],
+  "general": {
+    "supportsaudioprocessing": false,
+    "properties": {
+      "apikey":        { "order": 0, "text": "Artificial Analysis API key (free at artificialanalysis.ai)", "type": "textinput", "value": "" },
+      "refreshhours":  { "order": 1, "text": "Refresh interval (hours)", "type": "slider", "min": 1, "max": 24, "value": 4 },
+      "topn":          { "order": 2, "text": "Models shown (top N)", "type": "slider", "min": 20, "max": 60, "value": 40 },
+      "rankwindow":    { "order": 3, "text": "Rank change compared with", "type": "combo", "value": "7",
+                         "options": [ { "label": "1 day ago", "value": "1" }, { "label": "7 days ago", "value": "7" }, { "label": "30 days ago", "value": "30" } ] },
+      "ambientmotion": { "order": 4, "text": "Ambient motion", "type": "slider", "min": 0, "max": 100, "value": 28 },
+      "dimstars":      { "order": 5, "text": "Show the next N ranks as dim stars inside their constellation", "type": "bool", "value": true },
+      "skywidth":      { "order": 6, "text": "Sky ellipse width (% of screen)", "type": "slider", "min": 50, "max": 100, "value": 88 },
+      "skyheight":     { "order": 7, "text": "Sky ellipse height (% of screen)", "type": "slider", "min": 50, "max": 100, "value": 78 },
+      "showbackground":{ "order": 8, "text": "Show other models as faint background stars", "type": "bool", "value": true },
+      "showlegend":    { "order": 9, "text": "Show legend", "type": "bool", "value": true }
+    }
+  }
+}
